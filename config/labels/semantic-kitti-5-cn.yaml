@@ -1,0 +1,60 @@
+# This file is covered by the LICENSE file in the root of this project.
+name: "kitti"
+labels:
+  0: "unlabeled" # 未标注
+  10: "car" # 汽车
+  30: "person" # 行人
+  40: "road" # 道路
+  50: "building" # 建筑物
+  259: "non"
+color_map: # bgr
+  0: [0, 0, 0]
+  10: [245, 150, 100]
+  30: [30, 30, 255]
+  40: [255, 0, 255]
+  50: [0, 200, 255]
+  259: [255, 0, 0]
+content: # as a ratio with the total number of points
+  0: 0.1
+  10: 0.2
+  30: 0.2
+  40: 0.2
+  50: 0.3
+  259: 0.0
+# classes that are indistinguishable from single scan or inconsistent in
+# ground truth are mapped to their closest equivalent
+learning_map:
+  0: 0     # "unlabeled"
+  10: 1     # "car"
+  30: 2     # "person"
+  40: 3     # "road"
+  50: 4    # "building"
+  259: 5
+learning_map_inv: # inverse of previous map
+  0: 0      # "unlabeled", and others ignored
+  1: 10     # "car"
+  2: 30     # "person"
+  3: 40     # "road"
+  4: 50    # "building"
+  5: 259
+learning_ignore: # Ignore classes
+  0: True      # "unlabeled", and others ignored
+  1: False     # "car"
+  2: False     # "person"
+  3: False     # "road"
+  4: False    # "building"
+  5: True
+split: # sequence numbers
+  train:
+    - 1
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  valid:
+    - 9
+    - 10
+  test:
+    - 4
